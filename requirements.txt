@@ -1,0 +1,7 @@
+Django==2.0.2
+pytz==2018.3
+
+# Make Settings file class-based
+django-configurations==2.0
+
+psycopg2==2.7.4

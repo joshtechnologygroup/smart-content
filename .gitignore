@@ -54,13 +54,6 @@ coverage.xml
 *.log
 local_settings.py
 
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
 # Sphinx documentation
 docs/_build/
 
@@ -86,6 +79,7 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
+scontent/
 
 # Spyder project settings
 .spyderproject
@@ -99,3 +93,13 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# PyCharm Ignore Files
+.pydevproject
+.project
+.settings/
+.idea/
+.*~
+
+# Locals
+local.py
