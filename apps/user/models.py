@@ -20,6 +20,8 @@ class User(PermissionsMixin, AbstractBaseUser):
     USERNAME_FIELD = "username"
 
     username = models.CharField(_("Authentication Username"), max_length=50, unique=True)
+    request_to_verify = models.BooleanField(default=False)
+    verification_signature = models.TextField(null=True)
 
 
 class Profile(models.Model):
