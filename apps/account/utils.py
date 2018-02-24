@@ -1,4 +1,4 @@
-import requests
+from libs import peers_utils
 
 verify_broadcast_url = ""
 new_contract_url = ""
@@ -17,7 +17,7 @@ def broadcast_new_user_account(account):
             "address": account.address,
             "verification_signature": account.profile.user.verification_signature
         }
-        requests.post(verify_broadcast_url, data=payload)
+        peers_utils.broadcast_to_peers("post", verify_broadcast_url, data=payload)
 
 
 def broadcast_new_contract(contract):
@@ -30,7 +30,7 @@ def broadcast_new_contract(contract):
         "address": contract.address,
         "contract": contract.contract
     }
-    requests.post(new_contract_url, data=payload)
+    peers_utils.broadcast_to_peers("post", new_contract_url, data=payload)
 
 
 def broadcast_new_content(content):
@@ -43,4 +43,4 @@ def broadcast_new_content(content):
         "address": content.address,
         "contract": content.contract
     }
-    requests.post(new_contract_url, data=payload)
+    peers_utils.broadcast_to_peers("post", new_content_url, data=payload)
