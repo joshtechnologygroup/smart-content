@@ -1,5 +1,9 @@
-# smart-content
-Content and User Management for Smart Contract
+# smart-contract
+Smart Contracts on BlockChain - Service Providers and Stubs
+
+This repo provides several service providers implementation to serve as external producers in Smart Contract Application
+Block-chain core functionality are not provided here
+Several copies of this repo can exist with each other as long as they all interact with Block Chain
 
 
 **System Setup**
