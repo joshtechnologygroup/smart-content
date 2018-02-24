@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ContractConfig(AppConfig):
-    name = 'contract'
+    name = 'apps.contract'

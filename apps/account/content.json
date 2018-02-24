@@ -1,0 +1,21 @@
+{
+  "entities": {
+	"buyer": {
+	  "req": false,
+	  "address": []
+	},
+	"owner": {
+	  "req": true,
+	  "address": []
+	}
+  },
+  "meta": {
+	"title": "",
+	"description": ""
+  },
+  "actions": {
+	"buy": {
+	  "contract": ""
+	}
+  }
+}

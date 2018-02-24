@@ -27,3 +27,6 @@ class Account(models.Model):
 
     # Contract Account Settings
     contract = JSONField(null=True, default={})
+
+    # Content Settings
+    content = JSONField(null=True, default={})

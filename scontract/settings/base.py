@@ -42,7 +42,9 @@ class Settings(Configuration):
     THIRD_PARTY_APPS = []
 
     LOCAL_APPS = [
-        'apps.user'
+        'apps.user',
+        'apps.content',
+        'apps.contract'
     ]
 
     INSTALLED_APPS = property(lambda self: self.DJANGO_APPS + self.THIRD_PARTY_APPS + self.LOCAL_APPS)
