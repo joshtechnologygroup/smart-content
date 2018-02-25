@@ -9,7 +9,9 @@ class BuyContract(BaseContract):
     ENTITY_BUYER = "buyer"
     ENTITY_CONTENT_OWNER = "content_owner"
 
-    TX_TYPE_CONTENT_TRANSFER = "content_transfer"
+    TX_TYPE_CONTENT_TRANSFER = "user-content"
+
+    ACTION = "buy"
 
     @property
     def req_entities(self):
@@ -17,9 +19,9 @@ class BuyContract(BaseContract):
 
     def run(self, entities, *args, **kwargs):
 
-        self.validate_entities_structure(entities)
+        # self.validate_entities_structure(entities)
 
-        value = kwargs.get("price")
+        value = kwargs.get("params").get("price", 0)
 
         buyer_addr = self.get_addr(entities, self.ENTITY_BUYER)
 
@@ -54,6 +56,7 @@ class BuyContract(BaseContract):
                 "to": buyer,
                 "from": self.address,
                 "value": content,
-                "tx_type": self.TX_TYPE_CONTENT_TRANSFER
+                "tx_type": self.TX_TYPE_CONTENT_TRANSFER,
+                "action": self.ACTION
             }
         )

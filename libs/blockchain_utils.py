@@ -1,19 +1,18 @@
-import requests
+from libs import peers_utils
 
-blockchain_req_url = ""
-block_req_url = ""
+
+latest_block_req_url = "latestBlock/"
+block_req_url = "block/"
 
 
 def getLatestBlock():
-    return requests.get(blockchain_req_url).json()
+		return peers_utils.request_from_peers("get", latest_block_req_url)
 
 
 def get_block_state():
-    block = getLatestBlock()
-    return block.get("state")
+		block = getLatestBlock()
+		return block.get("state")
 
 
 def get_block(block_addr):
-    req_url = block_req_url + block_addr
-    block = requests.get(req_url).json()
-    return block.get("payload", {})
+		return peers_utils.request_from_peers("get", block_req_url + str(block_addr))

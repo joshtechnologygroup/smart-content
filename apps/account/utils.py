@@ -1,10 +1,10 @@
 from apps.account import models as account_models
 from libs import peers_utils
 
-verify_broadcast_url = ""
-new_contract_url = ""
-new_content_url = ""
-updated_content_url = ""
+new_user_url = "addAuthor/"
+new_contract_url = "addContract/"
+new_content_url = "addContent/"
+updated_content_url = "addContentContract/"
 
 
 def broadcast_new_user_account(account):
@@ -15,11 +15,11 @@ def broadcast_new_user_account(account):
 
     if account.profile.user.request_to_verify:
         payload = {
-            "user": account.profile.username,
+            "user": account.profile.user.username,
             "address": account.address,
             "verification_signature": account.profile.user.verification_signature
         }
-        peers_utils.broadcast_to_peers("post", verify_broadcast_url, data=payload)
+        peers_utils.broadcast_to_peers("post", new_user_url, json=payload)
 
 
 def broadcast_new_contract(contract):
@@ -32,7 +32,7 @@ def broadcast_new_contract(contract):
         "address": contract.address,
         "contract": contract.contract
     }
-    peers_utils.broadcast_to_peers("post", new_contract_url, data=payload)
+    peers_utils.broadcast_to_peers("post", new_contract_url, json=payload)
 
 
 def broadcast_content(content, url):
@@ -53,7 +53,7 @@ def broadcast_content(content, url):
         "entities": req_trusted_entities,
         "content": content.content
     }
-    peers_utils.broadcast_to_peers("post", url, data=payload)
+    peers_utils.broadcast_to_peers("post", url, json=payload)
 
 
 def broadcast_new_content(content):

@@ -26,7 +26,7 @@ class Settings(Configuration):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = '(qh-5&w#_@v4^duo=79+o#ssg=@gft#zzp19hadw$smhe*b55l'
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
 
     # Application definition
 
@@ -42,6 +42,7 @@ class Settings(Configuration):
     THIRD_PARTY_APPS = []
 
     LOCAL_APPS = [
+        'apps.account',
         'apps.user',
         'apps.content',
         'apps.contract'

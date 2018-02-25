@@ -18,6 +18,4 @@ def broadcast_new_account(sender, instance, is_created, **kwargs):
     """
 
     if is_created:
-
-        if instance.category == account_models.Account.USER:
-            broadcast_map.get(instance.category)(instance)
+        broadcast_map.get(instance.category)(instance)

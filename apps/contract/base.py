@@ -21,6 +21,8 @@ class BaseContract(metaclass=ABCMeta):
     ENTITY_CONTENT = "content"
     ENTITY_VERIFIER = "verifier"
 
+    TX_TYPE_USER_CREDIT = "user-credit"
+
     def __init__(self, addr):
         self.transactions = []
         self.address = addr
@@ -38,9 +40,7 @@ class BaseContract(metaclass=ABCMeta):
         return self.SUCCESS_STATUS, self.SUCCESS_MSG, self.transactions
 
     def validate_content_entity(self, content):
-
         latest_block = blockchain_utils.getLatestBlock()
-
 
     def validate_entities_structure(self, entities):
         """
@@ -73,11 +73,20 @@ class BaseContract(metaclass=ABCMeta):
         """
         Get address for the entity
         """
-        return entity.get(name, {}).get("address")
 
-    @staticmethod
-    def transfer_money(sender, rcpt, amount):
-        finance_methods.transfer_money(sender, rcpt, amount)
+        # Stubbed for now to return zero address. Should be handled by caller as per biz logic
+        return entity.get(name, {}).get("address")[0]
+
+    def transfer_money(self, sender, rcpt, amount):
+        self.transactions.append(
+            {
+                "from": sender,
+                "to": rcpt,
+                "value": amount,
+                "action": "",
+                "tx_type": self.TX_TYPE_USER_CREDIT
+            }
+        )
 
     def pay_verifier(self, verifier, value):
 

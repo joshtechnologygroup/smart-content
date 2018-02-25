@@ -1,11 +1,11 @@
 {
   "entities": {
 	"buyer": {
-	  "req": false,
+	  "required": false,
 	  "address": []
 	},
 	"owner": {
-	  "req": true,
+	  "required": true,
 	  "address": []
 	}
   },

@@ -19,7 +19,7 @@ class Account(models.Model):
         (USER, "User")
     )
 
-    address = models.TextField(null=False, blank=False)
+    address = models.TextField(null=False, blank=False, unique=True)
     category = models.PositiveIntegerField(choices=CATEGORY_CHOICES)
 
     # User Account Settings
