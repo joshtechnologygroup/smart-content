@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from libs import finance_methods
+from libs import finance_methods, blockchain_utils
 
 
 class EntityValidationMixin:
@@ -36,6 +36,11 @@ class BaseContract(metaclass=ABCMeta):
     @property
     def success_return(self):
         return self.SUCCESS_STATUS, self.SUCCESS_MSG, self.transactions
+
+    def validate_content_entity(self, content):
+
+        latest_block = blockchain_utils.getLatestBlock()
+
 
     def validate_entities_structure(self, entities):
         """

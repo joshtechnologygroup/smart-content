@@ -22,6 +22,9 @@ def content_discovery_view(request):
 
 @require_POST
 def content_action_view(request, *args, **kwargs):
+    """
+    Execute An Action for Content
+    """
 
     content = content_utils.get_content(kwargs['content_id'])
 
@@ -32,3 +35,5 @@ def content_action_view(request, *args, **kwargs):
         "payload": request.POST.get()
     }
     peers_utils.broadcast_to_peers("post", content_action_url, data=payload)
+
+    return JsonResponse(status=200, data={})

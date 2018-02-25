@@ -72,11 +72,15 @@ def broadcast_updated_content(content):
     broadcast_content(content, updated_content_url)
 
 
-def hit_account_addr(addr):
+def find_account_by_addr(addr):
     """
     Stub to hit the account and get relevant details
     Right now mocked to hit and get from PostgreSQL
     :param addr: 
     :return: 
     """
-    account_models.Account.objects.filter()
+    return account_models.Account.objects.filter(address=addr).first()
+
+
+def update_account_by_addr(addr, **kwargs):
+    account_models.Account.objects.filter(address=addr).update(**kwargs)
